@@ -1,5 +1,10 @@
-mixin message(user_full_name, username, text)
+mixin message(isMember, user_full_name, username, text)
     div.message
-        span #[strong #{user_full_name} (#{username})] says:
+        span
+            if isMember 
+                strong #{user_full_name} (#{username})
+            else 
+                strong Someone
+            |  Says:
         div.message-text
-            p.text
+            p.text=text

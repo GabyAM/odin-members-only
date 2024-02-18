@@ -22,7 +22,7 @@ block content
         ul 
           include message_mixin
           each message in messages 
-            +message(message.user.full_name, message.user.username, message.text)
+            +message(currentUser && currentUser.is_member ,message.user.full_name, message.user.username, message.text)
     else
       h1 No messages yet, be the first one!
 
