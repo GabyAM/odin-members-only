@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
+
+:root {
+    --bg-color: hsl(263, 81%, 6%);
+    --accent-color: hsl(292, 100% 88%);
+    --gold-dark: hsl(47, 82%, 35%);
+    --gold-light: hsl(48, 76%, 79%);
+    --golden-gradient: radial-gradient(
+            ellipse farthest-corner at right bottom,
+            #fedb37 0%,
+            #fdb931 8%,
+            #9f7928 30%,
+            #8a6e2f 40%,
+            transparent 80%
+        ),
+        radial-gradient(
+            ellipse farthest-corner at left top,
+            #ffffff 0%,
+            #ffffac 8%,
+            #d1b464 25%,
+            #5d4a1f 62.5%,
+            #5d4a1f 100%
+        );
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: var(--bg-color);
+    color: white;
+    font-family: 'Red Hat Display';
+}
+button {
+    border: none;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
