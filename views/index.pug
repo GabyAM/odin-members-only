@@ -11,8 +11,8 @@ block content
     if currentUser
       div.send-message
         h2 Send message
-        form(method="post")
-          textarea(placeholder="What are you thinking" name="message")
+        form(method="POST")
+          textarea(placeholder="What are you thinking?" name="message")
           button Send
     else
       h2 Log in to send a message

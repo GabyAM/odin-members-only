@@ -2,11 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const userController = require('../controllers/user');
+const messageController = require('../controllers/message');
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-    res.render('index', { title: 'Express' });
-});
+router.get('/', messageController.index);
 
 router.get('/signup', (req, res, next) => {
     res.render('sign_up_form');
