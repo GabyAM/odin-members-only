@@ -2,6 +2,7 @@ const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const User = require('../models/user');
+const passport = require('../passportConfig');
 exports.createUserPost = [
     asyncHandler(async (req, res, next) => {
         try {
@@ -24,5 +25,16 @@ exports.createUserPost = [
         } catch (e) {
             return next(e);
         }
+    })
+];
+
+exports.loginUserGet = (req, res, next) => {
+    res.render('login');
+};
+
+exports.loginUserPost = [
+    passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/'
     })
 ];
