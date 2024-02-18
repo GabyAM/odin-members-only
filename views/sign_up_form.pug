@@ -1,0 +1,17 @@
+extends layout 
+block content 
+    h1 JOIN THE CLUBHOUSE
+    h2 #[strong This will be an unforgettable experience,] unless you forget it
+    form(method="POST")
+        label First name 
+            input.form-field(type="text" name="first-name" placeholder="Kyle")
+        label Last name 
+            input.form-field(type="text" name="last-name" placeholder="Adams") 
+        fieldset 
+            label Password
+                input.form-field(type="password" name="password")
+            label Confirm password
+                input.form-field(type="password" name="confirm-password")
+            span Password must contain at least 8 characters
+        input(type="hidden" value="member" name="status")
+        button Let's go
