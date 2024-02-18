@@ -6,6 +6,7 @@ const messageController = require('../controllers/message');
 
 /* GET home page. */
 router.get('/', messageController.index);
+router.post('/', messageController.indexMessagePost);
 
 router.get('/signup', (req, res, next) => {
     res.render('sign_up_form');

@@ -12,3 +12,15 @@ exports.index = asyncHandler(async (req, res, next) => {
         messages
     });
 });
+
+exports.indexMessagePost = [
+    asyncHandler(async (req, res, next) => {
+        const message = new Message({
+            user: req.user.id,
+            title: req.body.title,
+            text: req.body.message
+        });
+        await message.save();
+        res.redirect('/');
+    })
+];
