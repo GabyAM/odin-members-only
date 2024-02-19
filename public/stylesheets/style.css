@@ -164,7 +164,7 @@ textarea::placeholder {
 }
 
 .signup-content {
-    max-width: 800px;
+    max-width: 1000px;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -173,20 +173,20 @@ textarea::placeholder {
     padding-top: 4em;
 }
 
-.signup-content h1 {
+.signup-heading {
     position: relative;
     letter-spacing: 0.125em;
     font-weight: 400;
-    font-size: 48px;
+    font-size: 64px;
     color: var(--accent-color);
 }
-.signup-content h1::before {
+.signup-heading::before {
     content: '';
     display: block;
     position: absolute;
     width: 500px;
     height: 500px;
-    top: -1100%;
+    top: -800%;
     left: 0;
     right: 0;
     margin-left: auto;
@@ -277,3 +277,63 @@ textarea::placeholder {
 .member-card h3 {
     font-weight: 500;
     letter-spacing: 0.125em;
+}
+
+fieldset {
+    border: none;
+}
+.form-field {
+    background-color: var(--bg-color);
+    border: none;
+    color: white;
+    padding: 0.8em 0.5em;
+    width: 100%;
+    font-size: 16px;
+}
+.form-field:focus {
+    outline: 2px solid var(--accent-color);
+}
+
+.signup-content.form-content {
+    gap: 1em;
+}
+
+.signup-content .signup-form-wrapper {
+    margin: 0 auto;
+}
+
+.signup-form-wrapper h2 {
+    font-size: 24px;
+}
+
+.signup-form {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    padding: 3em 0 2em;
+}
+
+.signup-form .password-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2em;
+}
+.password-section span {
+    color: hsl(0, 0%, 40%);
+}
+
+.signup-form button {
+    border: 2px solid var(--accent-color);
+    border-bottom-width: 7px;
+    background-color: var(--bg-color);
+    color: white;
+    width: fit-content;
+    font-size: 36px;
+    margin: 0 auto;
+    padding: 0.1em 1.2em;
+}
+.signup-form button span {
+    color: var(--accent-color);
+    font-weight: 700;
+}
