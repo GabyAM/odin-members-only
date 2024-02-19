@@ -22,7 +22,8 @@ block content
                         div.gold-border
                             input.form-field(type="password" name="confirm-password")
                     span Password must contain at least 8 characters
-                label Secret member password
-                    div.gold-border
-                        input.form-field(type="password" name="status")
+                if locals.status === 'member'
+                    label Secret member password
+                        div.gold-border
+                            input.form-field(type="password" name="member-password")
                 button Let's #[span go]
