@@ -148,7 +148,7 @@ textarea::placeholder {
 .message-list li strong {
     color: var(--accent-color);
 }
-.message-container {
+.gold-border {
     background: var(--golden-gradient);
     padding: 2px;
 }
