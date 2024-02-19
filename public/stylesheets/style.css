@@ -3,6 +3,8 @@
 :root {
     --bg-color: hsl(263, 81%, 6%);
     --accent-color: hsl(292, 100%, 88%);
+    --accent-color-light: hsl(292, 66%, 90%);
+    --accent-color-dark: hsl(284, 100%, 17%);
     --gold-dark: hsl(47, 82%, 35%);
     --gold-light: hsl(48, 76%, 79%);
     --golden-gradient: radial-gradient(
@@ -160,3 +162,118 @@ textarea::placeholder {
     min-height: 70px;
     padding: 0.3rem 1rem;
 }
+
+.signup-content {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    text-align: center;
+    gap: 4em;
+    padding-top: 4em;
+}
+
+.signup-content h1 {
+    position: relative;
+    letter-spacing: 0.125em;
+    font-weight: 400;
+    font-size: 48px;
+    color: var(--accent-color);
+}
+.signup-content h1::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: -1100%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 100vh;
+    box-shadow: 0px 150px 300px 0px var(--accent-color-light);
+}
+
+.signup-content h2 {
+    font-weight: 400;
+}
+
+.method-select {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.method-select span {
+    font-size: 14px;
+}
+.method-select span a {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+.signup-content .cards-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 400px;
+    margin: 0 auto;
+    gap: 3em;
+}
+
+.cards-container > a {
+    flex: 1;
+    height: fit-content;
+}
+
+.card {
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25em;
+    padding: 0.6em 1.2em;
+    color: black;
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: scale(1.05);
+}
+.card h3 {
+    font-size: 24px;
+}
+.card ul {
+    padding: 0 0.6em;
+    aspect-ratio: 1/1.2;
+    text-align: left;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+    font-weight: 500;
+}
+.cards-container .user-card {
+    background: linear-gradient(
+        to bottom,
+        var(--accent-color),
+        var(--accent-color-dark)
+    );
+}
+
+.user-card::before {
+    content: '';
+    position: absolute;
+    background: transparent;
+    border: 2px solid black;
+    width: calc(100% - 0.8rem);
+    height: calc(100% - 0.8rem);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.cards-container .member-card {
+    background: var(--golden-gradient);
+}
+.member-card h3 {
+    font-weight: 500;
+    letter-spacing: 0.125em;
