@@ -1,10 +1,11 @@
 mixin message(isMember, user_full_name, username, text)
-    div.message
         span
             if isMember 
                 strong #{user_full_name} (#{username})
             else 
                 strong Someone
             |  Says:
-        div.message-text
-            p.text=text
+        div.message-container
+            div.message
+                div.message-text
+                    p.text=text

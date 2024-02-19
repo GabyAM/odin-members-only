@@ -6,23 +6,29 @@ block content
       if currentUser
         a(href="/logout") Logout
       else 
-        a(href="/signup").join-button Join 
+        a(href="/signup").join-button
+          span JOIN
   div.home-content
-    if currentUser
-      div.send-message
-        h2 Send message
-        form(method="POST")
-          textarea(placeholder="What are you thinking?" name="message")
-          button Send
-    else
-      h2 Log in to send a message
-    hr
+    div.send-message
+      if currentUser
+          h2 Send message
+          form(method="POST")
+            div.message-container
+              textarea(placeholder="What are you thinking?" name="message")
+            button Send
+          hr
+      else
+        div.login-message
+          h2 Want to send a message?
+          a(href="/login")
+            strong Log in
     if messages.length
       div.message-list
         ul 
           include message_mixin
-          each message in messages 
-            +message(currentUser && currentUser.is_member ,message.user.full_name, message.user.username, message.text)
+          each message in messages
+            li 
+              +message(currentUser && currentUser.is_member ,message.user.full_name, message.user.username, message.text)
     else
       h1 No messages yet, be the first one!
 
