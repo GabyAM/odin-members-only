@@ -8,9 +8,10 @@ const messageController = require('../controllers/message');
 router.get('/', messageController.index);
 router.post('/', (req, res, next) => {
     if (req.body.action === 'send') {
-        messageController.indexMessageSendPost(req, res);
+        messageController.indexMessageSendPost(req, res, next);
+    } else {
+        messageController.indexMessageDeletePost(req, res, next);
     }
-    messageController.indexMessageDeletePost(req, res);
 });
 
 router.get('/login', userController.loginUserGet);
