@@ -5,32 +5,83 @@ const User = require('../models/user');
 const passport = require('../passportConfig');
 
 exports.createUserGet = (req, res, next) => {
-    console.log(req.member_status);
     res.render('sign_up_form', { status: req.member_status });
 };
 
+const mapErrors = function (errors) {
+    const mappedErrors = {};
+    errors.array().forEach((error) => {
+        if (!mappedErrors[error.path]) {
+            mappedErrors[error.path] = [error.msg];
+        } else {
+            mappedErrors[error.path].push(error.msg);
+        }
+    });
+    return mappedErrors;
+};
+
 exports.createUserPost = [
+    body('first-name', 'First name cannot be empty').notEmpty().escape(),
+    body('last-name', 'Last name cannot be empty').notEmpty().escape(),
+    body('username')
+        .notEmpty()
+        .withMessage('Username cannot be empty')
+        .isLength({ max: 20 })
+        .withMessage("Username can't be longer than 20 characters")
+        .custom(async (value) => {
+            const user = await User.findOne({ username: value });
+            if (user) {
+                throw new Error(`The username "${value}" is already in use`);
+            }
+        })
+        .escape(),
+    body('password', 'Password must contain at least 8 characters')
+        .isLength({
+            min: 5
+        })
+        .escape(),
+    body('confirm-password')
+        .custom((value, { req }) => {
+            return value === req.body.password;
+        })
+        .withMessage('Passwords do not match')
+        .escape(),
+    body('member-password', 'Member password is incorrect, nice try!')
+        .equals('1234')
+        .escape(),
     asyncHandler(async (req, res, next) => {
-        try {
-            bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
-                if (err) {
-                    throw new Error(err);
-                }
-
-                const user = new User({
-                    first_name: req.body['first-name'],
-                    last_name: req.body['last-name'],
-                    username: req.body.username,
-                    password: hashedPassword,
-                    is_member: req.body['member-password'] !== undefined,
-                    is_admin: req.body.status === 'admin'
-                });
-
-                const result = await user.save();
-                res.redirect('/');
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            res.render('sign_up_form', {
+                status: req.body.status,
+                errors: mapErrors(errors)
             });
-        } catch (e) {
-            return next(e);
+        } else {
+            try {
+                bcrypt.hash(
+                    req.body.password,
+                    10,
+                    async (err, hashedPassword) => {
+                        if (err) {
+                            throw new Error(err);
+                        }
+
+                        const user = new User({
+                            first_name: req.body['first-name'],
+                            last_name: req.body['last-name'],
+                            username: req.body.username,
+                            password: hashedPassword,
+                            is_member: req.body.status === 'member',
+                            is_admin: req.body.status === 'admin'
+                        });
+
+                        const result = await user.save();
+                        res.redirect('/');
+                    }
+                );
+            } catch (e) {
+                return next(e);
+            }
         }
     })
 ];

@@ -321,9 +321,6 @@ fieldset {
     grid-template-columns: 1fr 1fr;
     gap: 0 2em;
 }
-.password-section span {
-    color: hsl(0, 0%, 40%);
-}
 
 .signup-form button {
     border: 2px solid var(--accent-color);
@@ -338,4 +335,11 @@ fieldset {
 .signup-form button span {
     color: var(--accent-color);
     font-weight: 700;
+}
+
+span.error {
+    color: rgb(255, 136, 106);
+}
+span.informative {
+    color: hsl(0, 0%, 40%);
 }

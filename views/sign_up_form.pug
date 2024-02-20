@@ -1,5 +1,6 @@
 extends layout 
 block content 
+    include error_span_mixin
     div.signup-content.form-content
         h1.signup-heading JOIN THE CLUBHOUSE
         div.signup-form-wrapper
@@ -8,22 +9,36 @@ block content
                 label First name
                     div.gold-border 
                         input.form-field(type="text" name="first-name" placeholder="Kyle")
+                    if locals.errors && errors["first-name"]
+                        +errorSpan(errors["first-name"])
                 label Last name
                     div.gold-border 
-                        input.form-field(type="text" name="last-name" placeholder="Adams") 
+                        input.form-field(type="text" name="last-name" placeholder="Adams")
+                    if locals.errors && errors["last-name"]
+                        +errorSpan(errors["last-name"]) 
                 label Username
                     div.gold-border
                         input.form-field(type="text" name="username") 
+                    if locals.errors && errors.username
+                            +errorSpan(errors.username)
                 fieldset.password-section
                     label Password
                         div.gold-border
                             input.form-field(type="password" name="password")
+                        if locals.errors && errors.password
+                            +errorSpan(errors.password)
+                        else
+                            span.informative Password must contain at least 8 characters
                     label Confirm password
                         div.gold-border
                             input.form-field(type="password" name="confirm-password")
-                    span Password must contain at least 8 characters
+                        if locals.errors && errors["confirm-password"]
+                            +errorSpan(errors["confirm-password"])
                 if locals.status === 'member'
                     label Secret member password
                         div.gold-border
                             input.form-field(type="password" name="member-password")
+                        if locals.errors && errors["member-password"]
+                            +errorSpan(errors["member-password"])
+                input(type="hidden" name="status" value=status)
                 button Let's #[span go]
