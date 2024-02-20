@@ -338,7 +338,11 @@ fieldset {
 }
 
 span.error {
-    color: rgb(255, 136, 106);
+    color: hsl(12, 78%, 32%);
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+    padding-top: 0.25rem;
 }
 span.informative {
     color: hsl(0, 0%, 40%);
@@ -388,4 +392,8 @@ span.informative {
     background: var(--golden-gradient);
     background-clip: text;
     color: transparent;
+}
+
+.icon-container {
+    display: grid;
 }
