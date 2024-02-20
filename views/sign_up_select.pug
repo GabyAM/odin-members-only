@@ -4,8 +4,8 @@ block content
         h1.signup-heading JOIN THE CLUBHOUSE 
         h2 Select your experience
         div.method-select
-            div.cards-container
-                if section === 'default'
+            if section === 'default'
+                div.cards-container
                     a(href="/signup/user")
                         div.card.user-card
                             h3 User 
@@ -20,7 +20,8 @@ block content
                                 li Additional information about the messages 
                                 li Requires password
                     a.more-methods(href="/signup?section=more") More >>
-                else
+            else
+                div.cards-container.secondary
                     a(href="/signup/admin")
                         div.card.admin-card
                             h3 Admin 
@@ -28,4 +29,5 @@ block content
                                     li All the member benefits 
                                     li Delete messages 
                                     li Requires admin password
+                    a.more-methods(href="/signup") << Go back
             span Already have an account? #[a(href="/login") Login]

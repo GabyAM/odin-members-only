@@ -215,8 +215,8 @@ textarea::placeholder {
 }
 .signup-content .cards-container {
     display: flex;
+    position: relative;
     flex-direction: row;
-    max-width: 400px;
     margin: 0 auto;
     gap: 3em;
 }
@@ -226,7 +226,21 @@ textarea::placeholder {
     height: fit-content;
 }
 
+.cards-container .more-methods {
+    position: absolute;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.cards-container.secondary .more-methods {
+    left: -60%;
+    right: auto;
+}
+
 .card {
+    max-width: 180px;
     position: relative;
     text-align: center;
     display: flex;
@@ -279,6 +293,14 @@ textarea::placeholder {
 .member-card h3 {
     font-weight: 500;
     letter-spacing: 0.125em;
+}
+.admin-card {
+    background: linear-gradient(
+        to bottom,
+        hsl(0, 0%, 87%),
+        hsl(0, 0%, 66%) 35%,
+        hsl(0, 0%, 13%)
+    );
 }
 
 fieldset {
