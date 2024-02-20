@@ -8,7 +8,20 @@ const passport = require('./passportConfig');
 
 const indexRouter = require('./routes/index');
 const signupRouter = require('./routes/signup');
+
+const compression = require('compression');
+const helmet = require('helmet');
+
 const app = express();
+
+app.use(compression());
+app.use(helmet());
+const RateLimit = require('express-rate-limit');
+const limiter = RateLimit({
+    windowMs: 1 * 60 * 1000,
+    max: 30
+});
+app.use(limiter);
 
 app.use(session({ secret: 'cats', resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
