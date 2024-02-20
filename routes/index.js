@@ -12,4 +12,9 @@ router.get('/login', userController.loginUserGet);
 router.post('/login', userController.loginUserPost);
 
 router.get('/logout', userController.logoutUserGet);
+
+router
+    .route('/upgrade')
+    .get(userController.upgradeUserGet)
+    .post(userController.upgradeUserPost);
 module.exports = router;

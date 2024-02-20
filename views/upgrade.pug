@@ -1,0 +1,18 @@
+extends layout 
+block content
+    if locals.upgrade_error 
+        span.error=error
+    else
+        div.upgrade-container
+            div.upgrade-card
+                div
+                    h1 You are just a password away
+                    h2 of becoming a member
+                form(method="POST")
+                    div
+                        div.gold-border
+                            input.form-field(type="password" name="member-password")
+                        if locals.password_error
+                            span.error=password_error
+                    button
+                        span JOIN

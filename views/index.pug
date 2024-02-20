@@ -4,7 +4,12 @@ block content
   header 
       h1 THE CLUBHOUSE
       if currentUser
-        a(href="/logout") Logout
+        div
+          if !currentUser.is_member
+            a(href="/upgrade")
+              span Become a member
+            div.vertical-separator
+          a(href="/logout") Logout
       else 
         a(href="/signup").join-button
           span JOIN
