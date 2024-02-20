@@ -386,6 +386,19 @@ span.error {
 span.informative {
     color: hsl(0, 0%, 40%);
 }
+
+header div {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+.vertical-separator {
+    background-color: white;
+    width: 1px;
+    height: 16px;
+}
+
 .golden-card-container {
     display: flex;
     height: 100vh;
