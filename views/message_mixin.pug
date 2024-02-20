@@ -1,11 +1,13 @@
-mixin message(isMember, user_full_name, username, text)
-        span
+mixin message(isMember, message)
+        span.message-user
             if isMember 
-                strong #{user_full_name} (#{username})
+                strong #{message.user.full_name} (#{message.user.username})
             else 
                 strong Someone
             |  Says:
         div.gold-border
             div.message
                 div.message-text
-                    p.text=text
+                    p.text=message.text
+                    if isMember
+                        span.informative=message.createdAt_formatted
