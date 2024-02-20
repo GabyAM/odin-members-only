@@ -1,12 +1,18 @@
 extends layout
 block content 
+    div.golden-card-container
             div.golden-card
                 form.signup-form(method='POST')
+                    include error_span_mixin
                     label Username
                         div.gold-border
                             input.form-field(type="text" name="username")
+                        if locals.errors && errors.username 
+                            +errorSpan(errors.username)
                     label Password 
                         div.gold-border    
-                            input.form-field(type="password" name="password")
+                            input.form-field(type="password" name="password" value=locals.password || '')
+                        if locals.errors && errors.password 
+                            +errorSpan(errors.password)
                     button
                         span Log in

@@ -8,12 +8,11 @@ passport.use(
         try {
             const user = await User.findOne({ username });
             if (!user) {
-                return done(null, false, { message: 'Incorrect username' });
+                return done(null, false, { username: ['Incorrect username'] });
             }
             const match = await bcrypt.compare(password, user.password);
             if (!match) {
-                // passwords do not match!
-                return done(null, false, { message: 'Incorrect password' });
+                return done(null, false, { password: ['Incorrect password'] });
             }
             return done(null, user);
         } catch (err) {

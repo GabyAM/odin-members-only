@@ -92,9 +92,34 @@ exports.loginUserGet = (req, res, next) => {
 };
 
 exports.loginUserPost = [
-    passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: '/'
+    body('username', 'username cannot be empty').notEmpty().escape(),
+    body('password', 'password must contain at least 8 characters')
+        .isLength({ min: 8 })
+        .escape(),
+    asyncHandler(async (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            res.render('login', {
+                password: req.body.password,
+                errors: mapErrors(errors)
+            });
+        }
+        passport.authenticate('local', function (error, user, info) {
+            if (error) {
+                return next(error);
+            }
+            if (info) {
+                res.render('login', {
+                    errors: info
+                });
+            }
+            req.logIn(user, function (err) {
+                if (err) {
+                    return next(err);
+                }
+                return res.redirect('/');
+            });
+        })(req, res, next);
     })
 ];
 
