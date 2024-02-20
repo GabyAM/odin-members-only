@@ -47,6 +47,7 @@ exports.createUserPost = [
         .withMessage('Passwords do not match')
         .escape(),
     body('member-password', 'Member password is incorrect, nice try!')
+        .if((value, { req }) => req.body['member-password'])
         .equals('1234')
         .escape(),
     asyncHandler(async (req, res, next) => {
