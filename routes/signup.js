@@ -3,7 +3,9 @@ const router = express.Router();
 const userController = require('../controllers/user');
 
 router.get('/', (req, res, next) => {
-    res.render('sign_up_select');
+    res.render('sign_up_select', {
+        section: req.query.section === 'more' ? 'more' : 'default'
+    });
 });
 
 router.get('/:member_status', (req, res, next) => {

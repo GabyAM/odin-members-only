@@ -50,6 +50,10 @@ exports.createUserPost = [
         .if((value, { req }) => req.body.status === 'member')
         .equals('1234')
         .escape(),
+    body('admin-password', 'Admin password is incorrect, nice try!')
+        .if((value, { req }) => req.body.status === 'admin')
+        .equals('1234')
+        .escape(),
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -72,7 +76,9 @@ exports.createUserPost = [
                             last_name: req.body['last-name'],
                             username: req.body.username,
                             password: hashedPassword,
-                            is_member: req.body.status === 'member',
+                            is_member:
+                                req.body.status === 'member' ||
+                                req.body.status === 'admin',
                             is_admin: req.body.status === 'admin'
                         });
 

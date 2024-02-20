@@ -40,5 +40,11 @@ block content
                             input.form-field(type="password" name="member-password")
                         if locals.errors && errors["member-password"]
                             +errorSpan(errors["member-password"])
+                if locals.status === 'admin'
+                    label Secret admin password
+                        div.gold-border
+                            input.form-field(type="password" name="admin-password")
+                        if locals.errors && errors["admin-password"]
+                            +errorSpan(errors["admin-password"]) 
                 input(type="hidden" name="status" value=status)
                 button.form-button Let's #[span go]

@@ -5,17 +5,27 @@ block content
         h2 Select your experience
         div.method-select
             div.cards-container
-                a(href="/signup/user")
-                    div.card.user-card
-                        h3 User 
-                        ul 
-                            li Write messages 
-                            li Boring
-                a(href="/signup/member")
-                    div.card.member-card
-                        h3 MEMBER 
-                        ul 
-                            li All the user benefits 
-                            li Additional information about the messages 
-                            li Requires password 
+                if section === 'default'
+                    a(href="/signup/user")
+                        div.card.user-card
+                            h3 User 
+                            ul 
+                                li Write messages 
+                                li Boring
+                    a(href="/signup/member")
+                        div.card.member-card
+                            h3 MEMBER 
+                            ul 
+                                li All the user benefits 
+                                li Additional information about the messages 
+                                li Requires password
+                    a.more-methods(href="/signup?section=more") More >>
+                else
+                    a(href="/signup/admin")
+                        div.card.admin-card
+                            h3 Admin 
+                                ul 
+                                    li All the member benefits 
+                                    li Delete messages 
+                                    li Requires admin password
             span Already have an account? #[a(href="/login") Login]
