@@ -48,11 +48,11 @@ exports.createUserPost = [
         .escape(),
     body('member-password', 'Member password is incorrect, nice try!')
         .if((value, { req }) => req.body.status === 'member')
-        .equals('1234')
+        .equals(process.env.MEMBER_PASSWORD)
         .escape(),
     body('admin-password', 'Admin password is incorrect, nice try!')
         .if((value, { req }) => req.body.status === 'admin')
-        .equals('1234')
+        .equals(process.env.ADMIN_PASSWORD)
         .escape(),
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
@@ -153,7 +153,7 @@ exports.upgradeUserGet = (req, res, next) => {
 
 exports.upgradeUserPost = [
     body('member-password', 'Member password is incorrect, nice try!')
-        .equals('1234')
+        .equals(process.env.MEMBER_PASSWORD)
         .escape(),
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
