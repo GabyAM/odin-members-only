@@ -322,7 +322,7 @@ fieldset {
     gap: 0 2em;
 }
 
-.signup-form button {
+.form-button {
     border: 2px solid var(--accent-color);
     border-bottom-width: 7px;
     background-color: var(--bg-color);
@@ -332,7 +332,7 @@ fieldset {
     margin: 0 auto;
     padding: 0.1em 1.2em;
 }
-.signup-form button span {
+.form-button span {
     color: var(--accent-color);
     font-weight: 700;
 }
@@ -342,4 +342,50 @@ span.error {
 }
 span.informative {
     color: hsl(0, 0%, 40%);
+}
+.golden-card-container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.golden-card {
+    background: var(--golden-gradient);
+    color: black;
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    min-height: 200px;
+    border-radius: 5px;
+    padding: 1em;
+    gap: 4em;
+    text-align: center;
+    justify-content: center;
+}
+.golden-card h2 {
+    font-size: 18px;
+    font-weight: 400;
+}
+.golden-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.golden-card button {
+    background-color: var(--bg-color);
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0.25em 1em;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.golden-card button span {
+    background: var(--golden-gradient);
+    background-clip: text;
+    color: transparent;
 }

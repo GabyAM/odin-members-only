@@ -1,8 +1,12 @@
 extends layout
 block content 
-    form(method='POST')
-        label Username
-            input(type="text" name="username")
-        label Password 
-            input(type="password" name="password")
-        button Log in
+            div.golden-card
+                form.signup-form(method='POST')
+                    label Username
+                        div.gold-border
+                            input.form-field(type="text" name="username")
+                    label Password 
+                        div.gold-border    
+                            input.form-field(type="password" name="password")
+                    button
+                        span Log in
