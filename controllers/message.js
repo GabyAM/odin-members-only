@@ -13,7 +13,7 @@ exports.index = asyncHandler(async (req, res, next) => {
     });
 });
 
-exports.indexMessagePost = [
+exports.indexMessageSendPost = [
     asyncHandler(async (req, res, next) => {
         const message = new Message({
             user: req.user.id,
@@ -24,3 +24,9 @@ exports.indexMessagePost = [
         res.redirect('/');
     })
 ];
+
+exports.indexMessageDeletePost = asyncHandler(async (req, res, next) => {
+    const id = req.body.action;
+    await Message.findByIdAndDelete(id);
+    res.redirect('/');
+});

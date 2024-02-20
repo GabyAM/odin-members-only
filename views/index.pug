@@ -18,6 +18,7 @@ block content
       if currentUser
           h2 Send message
           form(method="POST")
+            input(type="hidden" name="action" value="send")
             div.message-container
               textarea(placeholder="What are you thinking?" name="message")
             button Send
@@ -32,7 +33,7 @@ block content
           include message_mixin
           each message in messages
             li 
-              +message(currentUser && currentUser.is_member ,message)
+              +message(currentUser && currentUser.is_member, currentUser && currentUser.is_admin, message)
     else
       h1 No messages yet, be the first one!
 

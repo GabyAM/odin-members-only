@@ -6,7 +6,12 @@ const messageController = require('../controllers/message');
 
 /* GET home page. */
 router.get('/', messageController.index);
-router.post('/', messageController.indexMessagePost);
+router.post('/', (req, res, next) => {
+    if (req.body.action === 'send') {
+        messageController.indexMessageSendPost(req, res);
+    }
+    messageController.indexMessageDeletePost(req, res);
+});
 
 router.get('/login', userController.loginUserGet);
 router.post('/login', userController.loginUserPost);
