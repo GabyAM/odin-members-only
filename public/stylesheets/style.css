@@ -141,7 +141,8 @@ textarea::placeholder {
     gap: 1.5em;
 }
 .message-list li {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 0.25em;
 }
 .message-list .message-user {
@@ -169,6 +170,11 @@ textarea::placeholder {
     grid-template-rows: auto auto;
     justify-content: space-between;
     align-content: space-between;
+}
+.message-text p {
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 .message-text button {
     background-color: transparent;
